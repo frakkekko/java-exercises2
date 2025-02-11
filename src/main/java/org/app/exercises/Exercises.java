@@ -45,4 +45,9 @@ public class Exercises implements ExercisesI {
     public void persistence() {
 
     }
+
+    @Override
+    public void fraudolentBank() {
+
+    }
 }

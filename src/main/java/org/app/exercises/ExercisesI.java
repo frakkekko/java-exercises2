@@ -8,4 +8,5 @@ public interface ExercisesI {
     void parenthesisChecker();
     void stringConverter();
     void persistence();
+    void fraudolentBank();
 }
