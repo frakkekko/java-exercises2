@@ -1,8 +1,10 @@
 package org.app.exercises;
 
 import org.app.exercises.related.functions.RelatedFunctions;
+import org.app.exercises.related.structures.RelatedDataStructures;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Map;
 
 public class Exercises implements ExercisesI {
@@ -58,7 +60,9 @@ public class Exercises implements ExercisesI {
   public void caffeine() {
     printHeader("caffeine");
 
-
+    int number = 7;
+    String strBuilt = RelatedFunctions.caffeineFn(number);
+    System.out.println("String for number " + number + " --> " + strBuilt);
 
     printSeparator();
   }
@@ -66,6 +70,11 @@ public class Exercises implements ExercisesI {
   @Override
   public void greyNuances() {
     printHeader("greyNuances");
+
+    int numberOfNuances = 200;
+    String[] nuances = RelatedDataStructures.Colors.getGreyNuances(numberOfNuances);
+
+    System.out.println("Nuances for input " + 4 + " --> " + Arrays.toString(nuances));
 
     printSeparator();
   }

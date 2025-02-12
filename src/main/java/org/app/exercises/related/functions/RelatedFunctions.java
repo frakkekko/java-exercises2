@@ -59,4 +59,26 @@ public class RelatedFunctions {
 
     return sum;
   }
+
+  public static String caffeineFn(int number) {
+    boolean isDivisibleFor2 = number % 2 == 0;
+    boolean isDivisibleFor3 = number % 3 == 0;
+    boolean isDivisibleFor4 = number % 4 == 0;
+
+    String strBuilt = "";
+
+    if(isDivisibleFor3) {
+     strBuilt = "Java";
+    }
+
+    if(!strBuilt.isEmpty() && isDivisibleFor4) {
+      strBuilt = "Coffee";
+    }
+
+    if(!strBuilt.isEmpty() && isDivisibleFor2) {
+      strBuilt += " Script";
+    }
+
+    return strBuilt.isEmpty() ? "match_missed!" : strBuilt;
+  }
 }

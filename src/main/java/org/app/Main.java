@@ -7,5 +7,7 @@ public class Main {
     Exercises exercises = Exercises.getInstance();
     exercises.drinkFactory();
     exercises.oddNumbersTriangle();
+    exercises.caffeine();
+    exercises.greyNuances();
   }
 }
