@@ -9,5 +9,6 @@ public class Main {
     exercises.oddNumbersTriangle();
     exercises.caffeine();
     exercises.greyNuances();
+    exercises.parenthesisChecker();
   }
 }

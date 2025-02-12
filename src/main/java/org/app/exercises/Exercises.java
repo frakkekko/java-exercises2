@@ -83,6 +83,10 @@ public class Exercises implements ExercisesI {
   public void parenthesisChecker() {
     printHeader("parenthesisChecker");
 
+    String strToCheck = "{writing [[string (to test)] the ] checker}";
+
+    System.out.println("is '" + strToCheck + "' valid string: " + RelatedDataStructures.Group.checkGroup(strToCheck));
+
     printSeparator();
   }
 
