@@ -11,5 +11,6 @@ public class Main {
     exercises.greyNuances();
     exercises.parenthesisChecker();
     exercises.stringConverter();
+    exercises.persistence();
   }
 }

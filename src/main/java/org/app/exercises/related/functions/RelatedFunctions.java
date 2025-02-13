@@ -2,12 +2,9 @@ package org.app.exercises.related.functions;
 
 import org.app.exceptions.OddNumbersTriangleException;
 
-import java.util.List;
+import java.util.*;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RelatedFunctions {
@@ -99,4 +96,23 @@ public class RelatedFunctions {
 
     return charsList.stream().map(character -> occurencyMapping.get(character) > 1 ? ")" : "(").collect(Collectors.joining());
   }
+
+  public static int persistenceFn(int number) {
+
+    int persistence = 0;
+    int persistenceResult = number;
+
+    do {
+
+      persistenceResult =
+              Arrays.stream(Integer.valueOf(persistenceResult).toString().split(""))
+              .map(str -> Integer.valueOf(str)).reduce(1, (acc, curr) -> acc * curr);
+      persistence++;
+
+    } while(persistenceResult >= 10);
+
+
+    return persistence;
+  }
 }
+

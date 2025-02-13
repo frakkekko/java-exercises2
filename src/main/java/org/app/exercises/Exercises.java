@@ -104,6 +104,10 @@ public class Exercises implements ExercisesI {
   public void persistence() {
     printHeader("persistence");
 
+    int number = 999;
+    int persistence = RelatedFunctions.persistenceFn(number);
+
+    System.out.println("Persistence of number " + number + " is: " + persistence);
     printSeparator();
   }
 
