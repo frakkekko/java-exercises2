@@ -20,22 +20,24 @@ public class RelatedDataStructures {
 
     public static class Group {
         public static boolean checkGroup(String str){
-            Stack<String> opening = Arrays.stream(str.split("")).filter(character -> character.equals("(") || character.equals("[") || character.equals("{")).collect(Collectors.toCollection(Stack::new));
-            Queue<String> closing = Arrays.stream(str.split("")).filter(character -> character.equals(")") || character.equals("]") || character.equals("}")).collect(Collectors.toCollection(LinkedList::new));
 
-            System.out.println("opening: " + opening);
-            System.out.println("closing: " + closing);
+            // LIFO
+            Stack<String> openingParenthesis = Arrays.stream(str.split(""))
+                    .filter(character -> character.equals("(") || character.equals("[") || character.equals("{"))
+                    .collect(Collectors.toCollection(Stack::new));
 
-            if(opening.size() != closing.size()) {
+            // FIFO
+            Queue<String> closingParenthesis = Arrays.stream(str.split(""))
+                    .filter(character -> character.equals(")") || character.equals("]") || character.equals("}"))
+                    .collect(Collectors.toCollection(LinkedList::new));
+
+            if(openingParenthesis.size() != closingParenthesis.size()) {
                 return false;
             }
 
-            while (opening.size() > 0 && closing.size() > 0) {
-                String open = opening.getLast();
-                String close = closing.element();
-
-                System.out.println("open: " + open);
-                System.out.println("close: " + close);
+            while (openingParenthesis.size() > 0 && closingParenthesis.size() > 0) {
+                String open = openingParenthesis.getLast();
+                String close = closingParenthesis.element();
 
                 if (
                         (open.equals("(") && !close.equals(")")) ||
@@ -45,8 +47,8 @@ public class RelatedDataStructures {
                     return false;
                 }
 
-                opening.pop();
-                closing.remove();
+                openingParenthesis.pop();
+                closingParenthesis.remove();
             }
 
             return true;

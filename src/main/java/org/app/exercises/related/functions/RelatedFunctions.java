@@ -2,10 +2,13 @@ package org.app.exercises.related.functions;
 
 import org.app.exceptions.OddNumbersTriangleException;
 
+import java.util.List;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RelatedFunctions {
 
@@ -20,9 +23,10 @@ public class RelatedFunctions {
 
       currentEvapQuantityTotal += (currentQuantity * evapPerDay / 100);
       currentQuantity -= (currentQuantity * evapPerDay / 100);
-      if(currentEvapQuantityTotal <= thresholdQuantity) numOfDays++;
+      if (currentEvapQuantityTotal <= thresholdQuantity)
+        numOfDays++;
 
-   }
+    }
 
     return numOfDays;
   }
@@ -41,19 +45,19 @@ public class RelatedFunctions {
   public static int oddNumbersTriangleFn(int rowToSum) {
 
     int[][] oddNumbersTriangle = {
-            { 3, 5 },
-            { 7, 9, 11 },
-            { 13, 15, 17, 19 },
-            { 21, 23, 25, 27, 29 }
+        { 3, 5 },
+        { 7, 9, 11 },
+        { 13, 15, 17, 19 },
+        { 21, 23, 25, 27, 29 }
     };
 
-    if(rowToSum < 1 || rowToSum > oddNumbersTriangle.length) {
+    if (rowToSum < 1 || rowToSum > oddNumbersTriangle.length) {
       throw new OddNumbersTriangleException(rowToSum, 1, oddNumbersTriangle.length);
     }
 
     int sum = 0;
 
-    for(int number : oddNumbersTriangle[rowToSum - 1]) {
+    for (int number : oddNumbersTriangle[rowToSum - 1]) {
       sum += number;
     }
 
@@ -67,18 +71,32 @@ public class RelatedFunctions {
 
     String strBuilt = "";
 
-    if(isDivisibleFor3) {
-     strBuilt = "Java";
+    if (isDivisibleFor3) {
+      strBuilt = "Java";
     }
 
-    if(!strBuilt.isEmpty() && isDivisibleFor4) {
+    if (!strBuilt.isEmpty() && isDivisibleFor4) {
       strBuilt = "Coffee";
     }
 
-    if(!strBuilt.isEmpty() && isDivisibleFor2) {
+    if (!strBuilt.isEmpty() && isDivisibleFor2) {
       strBuilt += " Script";
     }
 
     return strBuilt.isEmpty() ? "match_missed!" : strBuilt;
+  }
+
+  public static String stringConverterFn(String str) {
+    Map<Character, Integer> occurencyMapping = new HashMap<>();
+
+    List<Character> charsList = str.replaceAll(" ", "").toLowerCase().chars().mapToObj(character -> (char) character)
+        .collect(Collectors.toList());
+
+
+    charsList.forEach(character -> {
+      occurencyMapping.merge(character, 1, Integer::sum);
+    });
+
+    return charsList.stream().map(character -> occurencyMapping.get(character) > 1 ? ")" : "(").collect(Collectors.joining());
   }
 }

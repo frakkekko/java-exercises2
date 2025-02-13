@@ -10,5 +10,6 @@ public class Main {
     exercises.caffeine();
     exercises.greyNuances();
     exercises.parenthesisChecker();
+    exercises.stringConverter();
   }
 }

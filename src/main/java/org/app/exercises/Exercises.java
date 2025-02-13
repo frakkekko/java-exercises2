@@ -94,6 +94,9 @@ public class Exercises implements ExercisesI {
   public void stringConverter() {
     printHeader("stringConverter");
 
+    String str = "recede";
+    System.out.println(str + " => " + RelatedFunctions.stringConverterFn(str));
+
     printSeparator();
   }
 
